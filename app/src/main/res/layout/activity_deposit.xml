@@ -31,6 +31,7 @@
                 android:layout_margin="15dp"
                 android:id="@+id/depositInputEditText"
                 android:layout_weight="0.2"
+                android:inputType="number"
                 />
 
             <Button

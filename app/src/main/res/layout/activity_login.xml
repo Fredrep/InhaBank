@@ -18,7 +18,6 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/audiowide"
             android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@color/colorPrimaryDark"
@@ -81,7 +80,6 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="1dp"
                 android:text="@string/yes"
-                android:onClick="onClick"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark" />
 

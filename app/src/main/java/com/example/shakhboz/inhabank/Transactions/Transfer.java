@@ -69,24 +69,28 @@ public class Transfer extends AppCompatActivity {
                         int currentBalance = Integer.parseInt(curr);
                         int minusBalance = Integer.parseInt(amount.getText().toString());
 
-                        if((currentBalance-minusBalance)>0)
-                        {
-                            int finalBalance = currentBalance - minusBalance;
-                            String finalMoney = String.valueOf(finalBalance);
-                            String addingValue = String.valueOf(minusBalance);
-                            String type = "Transfer to: ";
-                            String dateTime = currentDateTime;
-                            String encryptData = finalMoney + "/" + type + transferred_to_user.getText().toString()+"/" + addingValue + "/" + dateTime;
-                            String encryptedFinalData = encryptFile(encryptData);
-                            String fname = usr + ".log";
-                            helper.appendToFile(encryptedFinalData,fname);
-                            ob.writeToFile(data, file_name);
-                            Intent intent = new Intent(Transfer.this, MainActivity.class);
-                            startActivity(intent);
+                        ArrayList<String> usernames = helper.readFromFile(HelperFunctions.usernamesFileName);
+
+                        if(usernames.contains(transferred_to_user.getText().toString())) {
+                            if ((currentBalance - minusBalance) > 0) {
+                                int finalBalance = currentBalance - minusBalance;
+                                String finalMoney = String.valueOf(finalBalance);
+                                String addingValue = String.valueOf(minusBalance);
+                                String type = "Transfer to: ";
+                                String dateTime = currentDateTime;
+                                String encryptData = finalMoney + "/" + type + transferred_to_user.getText().toString() + "/" + addingValue + "/" + dateTime;
+                                String encryptedFinalData = encryptFile(encryptData);
+                                String fname = usr + ".log";
+                                helper.appendToFile(encryptedFinalData, fname);
+                                ob.writeToFile(data, file_name);
+                                Intent intent = new Intent(Transfer.this, MainActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(getApplicationContext(), "You don't have enough money!!", Toast.LENGTH_LONG).show();
+                            }
                         }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(),"You don't have enough money!!",Toast.LENGTH_LONG).show();
+                        else {
+                            Toast.makeText(getApplicationContext(), "There is no any user!!", Toast.LENGTH_LONG).show();
                         }
                     }
                     else

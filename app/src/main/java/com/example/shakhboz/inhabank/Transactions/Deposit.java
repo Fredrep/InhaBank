@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.shakhboz.inhabank.MixedActions.HelperFunctions;
+import com.example.shakhboz.inhabank.MixedActions.MainActivity;
 import com.example.shakhboz.inhabank.R;
 
 import java.io.FileNotFoundException;
@@ -51,9 +53,9 @@ public class Deposit extends AppCompatActivity {
         setContentView(R.layout.activity_deposit);
 
         Button depositButton;
-        Button showbtn;
+        //Button showbtn;
         final EditText inputDepositText;
-        final TextView txtview;
+        //final TextView txtview;
 
         intent = getIntent();
         username = intent.getStringExtra("username");
@@ -62,9 +64,9 @@ public class Deposit extends AppCompatActivity {
         helper = new HelperFunctions(Deposit.this);
 
         depositButton = (Button)findViewById(R.id.depositButtonAction);
-        showbtn = (Button)findViewById(R.id.depositShow);
+        //showbtn = (Button)findViewById(R.id.depositShow);
         inputDepositText = (EditText)findViewById(R.id.depositInputEditText);
-        txtview = (TextView)findViewById(R.id.showBalanceText);
+        //txtview = (TextView)findViewById(R.id.showBalanceText);
 
 
 
@@ -96,10 +98,16 @@ public class Deposit extends AppCompatActivity {
                 }
                 output.println(encryptedFinalData);
                 output.close();*/
-                txtview.setText(encryptedFinalData);
+                //txtview.setText(encryptedFinalData);
+                inputDepositText.setText("");
+                Toast.makeText(Deposit.this, "Completed deposit", Toast.LENGTH_SHORT).show();
+                Intent mainIntent = new Intent(Deposit.this, MainActivity.class);
+                mainIntent.putExtra("username", username);
+                mainIntent.putExtra("password", password);
+                startActivity(mainIntent);
             }
         });
-
+        /*
         showbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,12 +137,12 @@ public class Deposit extends AppCompatActivity {
                     scan.close();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                }*/
+                }
                 txtview.setText(lastchanges);
 
 
             }
-        });
+        });*/
 
 
 

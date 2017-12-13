@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.shakhboz.inhabank.MixedActions.HelperFunctions;
+import com.example.shakhboz.inhabank.MixedActions.MainActivity;
 import com.example.shakhboz.inhabank.R;
 
 import java.io.PrintStream;
@@ -48,9 +50,9 @@ public class Withdraw extends AppCompatActivity {
         setContentView(R.layout.activity_withdraw);
 
         Button withdrawButton;
-        Button showbtnwith;
+        //Button showbtnwith;
         final EditText inputWithText;
-        final TextView txtviewWith;
+        //final TextView txtviewWith;
 
         intent = getIntent();
         username = intent.getStringExtra("username");
@@ -59,9 +61,9 @@ public class Withdraw extends AppCompatActivity {
         helper = new HelperFunctions(Withdraw.this);
 
         withdrawButton = (Button)findViewById(R.id.withdrawButtonAction);
-        showbtnwith = (Button)findViewById(R.id.withdrawShow);
+        //showbtnwith = (Button)findViewById(R.id.withdrawShow);
         inputWithText = (EditText)findViewById(R.id.withdrawInputEditText);
-        txtviewWith = (TextView)findViewById(R.id.showwithdrawBalanceText);
+        //txtviewWith = (TextView)findViewById(R.id.showwithdrawBalanceText);
 
 
 
@@ -93,11 +95,17 @@ public class Withdraw extends AppCompatActivity {
                 }
                 output.println(encryptedFinalData);
                 output.close();*/
-                txtviewWith.setText(encryptedFinalData);
+                //txtviewWith.setText(encryptedFinalData);
+                inputWithText.setText("");
+                Toast.makeText(Withdraw.this, "Completed withdraw", Toast.LENGTH_SHORT).show();
+                Intent mainIntent = new Intent(Withdraw.this, MainActivity.class);
+                mainIntent.putExtra("username", username);
+                mainIntent.putExtra("password", password);
+                startActivity(mainIntent);
             }
         });
 
-        showbtnwith.setOnClickListener(new View.OnClickListener() {
+        /*showbtnwith.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String fname = username + ".log";
@@ -126,11 +134,11 @@ public class Withdraw extends AppCompatActivity {
                     scan.close();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                }*/
+                }
                 txtviewWith.setText(lastchanges);
 
             }
-        });
+        });*/
 
 
     }

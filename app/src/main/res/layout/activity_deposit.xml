@@ -39,25 +39,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:layout_weight="0.2"
+                android:layout_weight="0.01"
                 android:background="@android:drawable/dialog_holo_light_frame"
                 android:text="DEPOSITT" />
-
-            <Button
-                android:id="@+id/depositShow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:layout_weight="0.2"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:text="SHOW" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:layout_weight="0.2"
-                android:id="@+id/showBalanceText"
-                />
 
 
         </LinearLayout>

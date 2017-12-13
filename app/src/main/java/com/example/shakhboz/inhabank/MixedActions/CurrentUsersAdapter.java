@@ -2,7 +2,6 @@ package com.example.shakhboz.inhabank.MixedActions;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,27 +17,18 @@ import java.util.ArrayList;
 
 public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
-    ArrayList<CurrentUsers> currentUsers;
+    ArrayList<String> currentUsers;
     Context context;
-
-    public void setCurrentUsers(ArrayList<CurrentUsers> currentUsers) {
-        this.currentUsers = currentUsers;
-    }
 
     public void setContext(Context context) {
         this.context = context;
-    }
-
-    public ArrayList<CurrentUsers> getCurrentUsers() {
-
-        return currentUsers;
     }
 
     public Context getContext() {
         return context;
     }
 
-    public CurrentUsersAdapter(ArrayList<CurrentUsers> currentUsers, Context context) {
+    public CurrentUsersAdapter(ArrayList<String> currentUsers, Context context) {
 
         this.currentUsers = currentUsers;
         this.context = context;
@@ -64,11 +54,8 @@ public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.View
 
     private void configureCurrentUsersViewHolder(CurrentUsersViewHolder currentUsersViewHolder, int position) {
 
-
-        String messageText = String.valueOf(currentUsers.get(position).getUserName());
-        currentUsersViewHolder.getUserName().setText(messageText);
-//        CurrentUsers currentUsers=this.getCurrentUsers().get(position).getUserName();
-//        currentUsersViewHolder.getUserName().setText((CharSequence) currentUsersViewHolder.getUserName());
+        String messageText = String.valueOf(currentUsers.get(position));
+        currentUsersViewHolder.userName.setText(messageText);
     }
 
     @Override
@@ -76,17 +63,7 @@ public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.View
         return this.currentUsers.size();
     }
     public static class CurrentUsersViewHolder extends RecyclerView.ViewHolder{
-//        private String userName;
-        private TextView userName;
-
-        public void setUserName(TextView userName) {
-            this.userName = userName;
-        }
-
-        public TextView getUserName() {
-
-            return userName;
-        }
+        TextView userName;
 
         public CurrentUsersViewHolder(View itemView) {
             super(itemView);

@@ -95,7 +95,7 @@
             android:layout_gravity="center|right"
             android:layout_weight="1"
             android:padding="8dp"
-            android:text="$0"
+            android:text=""
             android:textSize="10pt" />
     </LinearLayout>
 

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.shakhboz.inhabank.CheckInformation.TransactionHistory;
 import com.example.shakhboz.inhabank.R;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> usernames;
     private ArrayList<User> currentUsersArrayList;
     Button deposit,withdraw ,transfer, history;
+    private TextView currentBalance;
     HelperFunctions helper;
 
     Intent intent;
@@ -38,12 +40,24 @@ public class MainActivity extends AppCompatActivity {
         transfer = (Button) findViewById(R.id.transfer_id);
         history = (Button) findViewById(R.id.history_id);
 
+        currentBalance = (TextView) findViewById(R.id.current_balance_id);
+
         intent = getIntent();
         helper = new HelperFunctions(getApplicationContext());
         currentUsersArrayList = new ArrayList<User>();
-
         final String username = intent.getStringExtra("username");
         final String password = intent.getStringExtra("password");
+
+
+
+        ArrayList<String> tempInfo = helper.readFromFile(username + ".txt");
+        if(tempInfo.size() != 0){
+            currentBalance.setText("$" + tempInfo.get(1));
+        }else{
+            currentBalance.setText("$0");
+        }
+
+
         Log.i("username + password",username+password);
 
 
@@ -102,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         currentUsersRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_id);
         RecyclerView.LayoutManager currentUsersLayoutManager = new LinearLayoutManager(getApplicationContext());
         currentUsersRecyclerView.setLayoutManager(currentUsersLayoutManager);
-        currentUsersRecyclerView.setAdapter(new CurrentUsersAdapter(this.usernames, MainActivity.this));
+        currentUsersRecyclerView.setAdapter(new CurrentUsersAdapter(username, this.usernames, MainActivity.this));
 
     }
 }

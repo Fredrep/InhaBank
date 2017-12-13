@@ -17,11 +17,13 @@ import java.util.ArrayList;
 
 public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
+    String username;
     ArrayList<String> currentUsers;
     Context context;
 
 
-    public CurrentUsersAdapter(ArrayList<String> currentUsers, Context context) {
+    public CurrentUsersAdapter(String username, ArrayList<String> currentUsers, Context context) {
+        this.username = username;
         this.currentUsers = currentUsers;
         this.context = context;
     }
@@ -42,12 +44,26 @@ public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.View
         CurrentUsersViewHolder currentUsersViewHolder=(CurrentUsersViewHolder)holder;
         configureCurrentUsersViewHolder(currentUsersViewHolder,position);
 
+
+
+
     }
 
-    private void configureCurrentUsersViewHolder(CurrentUsersViewHolder currentUsersViewHolder, int position) {
+    private void configureCurrentUsersViewHolder(final CurrentUsersViewHolder currentUsersViewHolder, int position) {
 
         String messageText = String.valueOf(currentUsers.get(position));
         currentUsersViewHolder.userName.setText(messageText);
+
+        currentUsersViewHolder.userName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentUsersViewHolder.userName.getText().toString().equals(username)){
+
+                }else{
+
+                }
+            }
+        });
     }
 
     @Override

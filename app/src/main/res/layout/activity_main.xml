@@ -74,20 +74,49 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:orientation="horizontal">
 
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Balance should be shown here" />
+            android:layout_gravity="center|right"
+            android:padding="8dp"
+            android:text="Your current balance:"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/current_balance_id"
+            android:layout_width="158dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="$0" />
     </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top|center">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="25dp"
+    android:gravity="center"
+    android:padding="2dp"
+
+
+    android:text="Current users"/>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical" />
+</LinearLayout>
+
 
 </LinearLayout>
 

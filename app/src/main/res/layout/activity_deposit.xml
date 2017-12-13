@@ -17,10 +17,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center"
             android:layout_weight="1"
-            android:weightSum="1.5"
+            android:weightSum="1"
             >
             <EditText
                 android:layout_width="match_parent"
@@ -28,21 +28,31 @@
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:layout_margin="15dp"
                 android:id="@+id/depositInputEditText"
-                android:layout_weight="0.5"
+                android:layout_weight="0.2"
                 />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="DEPOSITT"
                 android:id="@+id/depositButtonAction"
-                android:layout_weight="0.25"/>
+                android:layout_margin="15dp"
+                android:layout_weight="0.2"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SHOW"
+                android:layout_margin="15dp"
                 android:id="@+id/depositShow"
-                android:layout_weight="0.25"/>
+                android:layout_weight="0.2"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_weight="0.2"
+                android:id="@+id/showBalanceText"
+                />
 
 
         </LinearLayout>

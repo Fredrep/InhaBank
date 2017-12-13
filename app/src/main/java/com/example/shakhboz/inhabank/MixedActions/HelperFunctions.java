@@ -120,8 +120,26 @@ public class HelperFunctions {
         return "";
     }
 
-    public boolean isUsernameAvailable(String username){
-        return true;
+
+    public boolean isPasswordExist(String password){
+        ArrayList<String> passwords = readFromFile(hashedPasswords);
+        for(int i = 0; i < passwords.size(); i++){
+            if(passwords.get(i).equals(password)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean isUsernameExist(String username){
+        ArrayList<String> usernames = readFromFile(usernamesFileName);
+        for(int i = 0; i < usernames.size(); i++){
+            if(usernames.get(i).equals(username)){
+                return true;
+            }
+        }
+        return false;
     }
 
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,10 +74,9 @@ public class Transfer extends AppCompatActivity {
                             int finalBalance = currentBalance - minusBalance;
                             String finalMoney = String.valueOf(finalBalance);
                             String addingValue = String.valueOf(minusBalance);
-                            String type = "Deposit";
+                            String type = "Transfer to: ";
                             String dateTime = currentDateTime;
-                            PrintStream output = null;
-                            String encryptData = finalMoney + "/" + type + "/" + addingValue + "/" + dateTime;
+                            String encryptData = finalMoney + "/" + type + transferred_to_user.getText().toString()+"/" + addingValue + "/" + dateTime;
                             String encryptedFinalData = encryptFile(encryptData);
                             String fname = usr + ".log";
                             helper.appendToFile(encryptedFinalData,fname);
@@ -103,8 +103,10 @@ public class Transfer extends AppCompatActivity {
         String balance;
         if(userslog.size()>=1){
             String tmp = userslog.get(userslog.size()-1);
+            Log.e("FROMFILE::", tmp);
+            String alldata = decryptFile(tmp);
             String delims = "[/]";
-            String[] logs = tmp.split(delims);
+            String[] logs = alldata.split(delims);
             balance = logs[0];
         }
         else{

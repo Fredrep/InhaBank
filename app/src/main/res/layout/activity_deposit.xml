@@ -34,7 +34,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DEPOSIT"
+                android:text="DEPOSITT"
                 android:id="@+id/depositButtonAction"
                 android:layout_weight="0.25"/>
             <Button

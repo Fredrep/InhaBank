@@ -21,8 +21,7 @@
         <activity android:name=".Transactions.Withdraw" />
         <activity android:name=".MixedActions.Login" />
         <activity android:name=".CheckInformation.Balance" />
-        <activity android:name=".CheckInformation.TransactionHistory" />
-        <activity android:name=".CheckInformation.Transactions" />
+        <activity android:name=".CheckInformation.TransactionHistory"/>
 
         <meta-data
             android:name="preloaded_fonts"

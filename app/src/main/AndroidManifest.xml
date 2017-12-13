@@ -24,6 +24,10 @@
         <activity android:name=".CheckInformation.TransactionHistory" />
         <activity android:name=".CheckInformation.Transactions" />
         <activity android:name=".CheckInformation.TransactionsFolder.Deposit"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

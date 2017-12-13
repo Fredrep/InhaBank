@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">InhaBank</string>
+    <string name="pass">Password</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="fgot">Forgot your loging details?</string>
+    <string name="yes">Yes</string>
+    <string name="test">Test</string>
 </resources>

@@ -8,14 +8,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Transactions.Transfer">
+        <activity android:name=".MixedActions.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MixedActions.MainActivity" />
+        <activity android:name=".Transactions.Transfer" />
         <activity android:name=".Transactions.Deposit" />
         <activity android:name=".Transactions.Withdraw" />
         <activity android:name=".MixedActions.Login" />

@@ -38,14 +38,14 @@ public class Login extends AppCompatActivity {
         editPassword = (EditText) findViewById(R.id.password);
         helper = new HelperFunctions(getApplicationContext());
 
-//        try {
-//            File usernamesFile = new File(HelperFunctions.usernamesFileName);
-//            File passwFile = new File(HelperFunctions.hashedPasswords);
-//            usernamesFile.createNewFile();
-//            passwFile.createNewFile();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            File usernamesFile = new File(HelperFunctions.usernamesFileName);
+            File passwFile = new File(HelperFunctions.hashedPasswords);
+            usernamesFile.createNewFile();
+            passwFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

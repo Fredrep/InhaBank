@@ -17,18 +17,40 @@ import java.util.ArrayList;
 
 public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
+<<<<<<< Updated upstream
     ArrayList<String> currentUsers;
     Context context;
 
+=======
+    ArrayList<User> currentUsers;
+    Context context;
+
+    public void setCurrentUsers(ArrayList<User> currentUsers) {
+        this.currentUsers = currentUsers;
+    }
+
+>>>>>>> Stashed changes
     public void setContext(Context context) {
         this.context = context;
     }
 
+<<<<<<< Updated upstream
+=======
+    public ArrayList<User> getCurrentUsers() {
+
+        return currentUsers;
+    }
+
+>>>>>>> Stashed changes
     public Context getContext() {
         return context;
     }
 
+<<<<<<< Updated upstream
     public CurrentUsersAdapter(ArrayList<String> currentUsers, Context context) {
+=======
+    public CurrentUsersAdapter(ArrayList<User> currentUsers, Context context) {
+>>>>>>> Stashed changes
 
         this.currentUsers = currentUsers;
         this.context = context;
@@ -54,8 +76,16 @@ public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.View
 
     private void configureCurrentUsersViewHolder(CurrentUsersViewHolder currentUsersViewHolder, int position) {
 
+<<<<<<< Updated upstream
         String messageText = String.valueOf(currentUsers.get(position));
         currentUsersViewHolder.userName.setText(messageText);
+=======
+
+        String messageText = String.valueOf(currentUsers.get(position).getUserName());
+        currentUsersViewHolder.getUserName().setText(messageText);
+//        User currentUsers=this.getCurrentUsers().get(position).getUserName();
+//        currentUsersViewHolder.getUserName().setText((CharSequence) currentUsersViewHolder.getUserName());
+>>>>>>> Stashed changes
     }
 
     @Override

@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.shakhboz.inhabank.R;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Signup extends AppCompatActivity {
@@ -48,6 +50,13 @@ public class Signup extends AppCompatActivity {
                             for(int i = 0; i < usernames.size(); i++){
                                 Log.e("USERNAME::", usernames.get(i));
                                 Log.e("PASSWORD::", passwords.get(i));
+                            }
+
+                            try {
+                                File logFile = new File(username + ".log");
+                                logFile.createNewFile();
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
 
 

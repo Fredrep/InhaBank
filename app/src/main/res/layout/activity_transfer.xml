@@ -62,6 +62,7 @@
             android:text="@string/amount"
             android:textSize="24sp" />
         <EditText
+            android:inputType="number"
             android:id="@+id/transfer_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/transfer_date"
+            android:text= "@string/transfer_date"
             android:textSize="24sp" />
         <TextView
             android:id="@+id/transfer_date"
@@ -91,4 +92,11 @@
             android:textSize="24sp" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:text="@string/submit" />
 </LinearLayout>

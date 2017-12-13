@@ -51,6 +51,10 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = editUsername.getText().toString();
+                ArrayList<String> tempInfo = helper.readFromFile(username+".txt");
+
+            
+
                 String password = editPassword.getText().toString();
                 String hashedPassw = helper.getSHA128Password(password);
                 if(!username.isEmpty()){

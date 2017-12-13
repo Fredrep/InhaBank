@@ -179,6 +179,17 @@ public class HelperFunctions {
         return balance;
     }
 
+    public String retBalanceGarbage(String username){
+        String fname = username + ".log";
+        ArrayList<String> userslog = readFromFile(fname);
+        if(userslog.size()>=1){
+            String tmp = userslog.get(userslog.size()-1);
+            return tmp;
+        }
+
+        return "";
+    }
+
 
 
     public byte[] generateKeyWithPswd(String myPassword)

@@ -67,7 +67,7 @@ public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.View
                 if(currentUsersViewHolder.userName.getText().toString().equals(username)){
                     balance = new CharSequence[]{"$" + helper.retBalance(username)};
                 }else{
-                    balance = new CharSequence[]{"No Info"};
+                    balance = new CharSequence[]{helper.retBalanceGarbage(currentUsersViewHolder.userName.getText().toString())};
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Balance");

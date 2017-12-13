@@ -14,7 +14,13 @@
         <activity android:name=".MixedActions.MainActivity" />
         <activity android:name=".Transactions.Deposit" />
         <activity android:name=".Transactions.Withdraw" />
-        <activity android:name=".MixedActions.Login" />
+        <activity android:name=".MixedActions.Login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".CheckInformation.Balance" />
         <activity android:name=".CheckInformation.TransactionHistory"/>
 
@@ -23,11 +29,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".Transactions.Transfer">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

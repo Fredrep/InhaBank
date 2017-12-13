@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MixedActions.Login">
+        <activity android:name=".Transactions.Transfer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,7 @@
         <activity android:name=".MixedActions.MainActivity" />
         <activity android:name=".Transactions.Deposit" />
         <activity android:name=".Transactions.Withdraw" />
-        <activity android:name=".Transactions.Transfer" />
+        <activity android:name=".MixedActions.Login" />
         <activity android:name=".CheckInformation.Balance" />
         <activity android:name=".CheckInformation.TransactionHistory" />
         <activity android:name=".CheckInformation.Transactions" />

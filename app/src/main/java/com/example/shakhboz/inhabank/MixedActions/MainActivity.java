@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.shakhboz.inhabank.CheckInformation.Balance;
 import com.example.shakhboz.inhabank.CheckInformation.TransactionHistory;
 import com.example.shakhboz.inhabank.R;
 import com.example.shakhboz.inhabank.Transactions.Deposit;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView currentUsersRecyclerView;
-    private ArrayList<CurrentUsers> currentUsersArrayList;
+    private ArrayList<String> usernames;
     Button deposit,withdraw ,transfer, history;
 
     Intent intent;
@@ -81,13 +80,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        currentUsersArrayList = new ArrayList<CurrentUsers>();
-        CurrentUsers currentUsers = new CurrentUsers("Shakhboz");
-        currentUsersArrayList.add(currentUsers);
+
+        HelperFunctions helper = new HelperFunctions(getApplicationContext());
+        usernames = helper.readFromFile(HelperFunctions.usernamesFileName);
         currentUsersRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_id);
         RecyclerView.LayoutManager currentUsersLayoutManager = new LinearLayoutManager(getApplicationContext());
         currentUsersRecyclerView.setLayoutManager(currentUsersLayoutManager);
-        currentUsersRecyclerView.setAdapter(new CurrentUsersAdapter(this.currentUsersArrayList, MainActivity.this));
+        currentUsersRecyclerView.setAdapter(new CurrentUsersAdapter(this.usernames, MainActivity.this));
 
     }
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -23,19 +24,31 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<CurrentUsers> currentUsersArrayList;
     Button deposit,withdraw ,transfer, history;
 
+    Intent intent;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         deposit = (Button) findViewById(R.id.deposit_id);
         withdraw=(Button)findViewById(R.id.withrdaw_id);
         transfer = (Button) findViewById(R.id.transfer_id);
         history = (Button) findViewById(R.id.history_id);
+
+        intent = getIntent();
+        final String username = intent.getStringExtra("username");
+        final String password = intent.getStringExtra("password");
+        Log.i("username + password",username+password);
+
+
         deposit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Deposit.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 startActivity(intent);
             }
         });
@@ -43,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Withdraw.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 startActivity(intent);
             }
         });
@@ -50,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Transfer.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 startActivity(intent);
             }
         });
@@ -57,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TransactionHistory.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 startActivity(intent);
             }
         });

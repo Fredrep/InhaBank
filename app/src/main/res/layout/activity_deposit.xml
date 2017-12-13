@@ -34,13 +34,19 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DEPOSIT"
+                android:text="DEPOSITT"
                 android:id="@+id/depositButtonAction"
-                android:layout_weight="0.5"/>
+                android:layout_weight="0.25"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SHOW"
+                android:id="@+id/depositShow"
+                android:layout_weight="0.25"/>
+
 
         </LinearLayout>
 
 
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

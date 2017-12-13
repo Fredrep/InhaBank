@@ -43,7 +43,7 @@ public class Transfer extends AppCompatActivity {
                 final String file_name=transferred_to_user.getText().toString()+".txt";
                     if(!transferred_to_user.getText().toString().isEmpty()&& !amount.getText().toString().isEmpty()) {
                         ob.writeToFile(data, file_name);
-                        
+
                     }
                     else
                     {

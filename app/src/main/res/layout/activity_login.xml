@@ -49,15 +49,16 @@
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="210dp" />
 
-        <Button
-            android:id="@+id/loginBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/login"
-            android:textColor="@color/colorPrimaryDark" />
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:text="@string/login"
+        android:textColor="@color/colorPrimaryDark" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,6 +85,25 @@
                 android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:id="@+id/signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10dp"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:text="@string/signup"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark" />
+
+    </LinearLayout>
 
     </LinearLayout>
 

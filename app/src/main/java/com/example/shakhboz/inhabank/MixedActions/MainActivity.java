@@ -50,12 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        ArrayList<String> tempInfo = helper.readFromFile(username + ".txt");
-        if(tempInfo.size() != 0){
-            currentBalance.setText("$" + tempInfo.get(1));
-        }else{
-            currentBalance.setText("$0");
-        }
+
+
+        currentBalance.setText("$" + helper.retBalance(username));
+
 
 
         Log.i("username + password",username+password);

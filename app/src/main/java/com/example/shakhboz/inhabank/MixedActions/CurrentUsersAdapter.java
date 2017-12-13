@@ -1,6 +1,8 @@
 package com.example.shakhboz.inhabank.MixedActions;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.shakhboz.inhabank.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -57,11 +62,22 @@ public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.View
         currentUsersViewHolder.userName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CharSequence balance[];
+                HelperFunctions helper = new HelperFunctions(context);
                 if(currentUsersViewHolder.userName.getText().toString().equals(username)){
-
+                    balance = new CharSequence[]{"$" + helper.retBalance(username)};
                 }else{
-
+                    balance = new CharSequence[]{"No Info"};
                 }
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Balance");
+                builder.setItems(balance, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.show();
             }
         });
     }

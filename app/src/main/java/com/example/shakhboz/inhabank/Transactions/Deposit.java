@@ -20,7 +20,11 @@ import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
+import java.util.Date;
 import java.util.Scanner;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -31,11 +35,15 @@ import Decoder.BASE64Encoder;
 
 public class Deposit extends AppCompatActivity {
     private byte[] key;
+    private HelperFunctions helper;
 
     Intent intent;
     /*private static byte[] key = {
             0x2d, 0x2a, 0x2d, 0x42, 0x55, 0x49, 0x4c, 0x44, 0x41, 0x43, 0x4f, 0x44, 0x45, 0x2d, 0x2a, 0x2d
     };*/
+
+    private String username;
+    private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,24 +55,38 @@ public class Deposit extends AppCompatActivity {
         final TextView txtview;
 
         intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String password = intent.getStringExtra("password");
+        username = intent.getStringExtra("username");
+        password = intent.getStringExtra("password");
 
-        HelperFunctions helper = new HelperFunctions(Deposit.this);
-        String salt = helper.getSalt();
+        helper = new HelperFunctions(Deposit.this);
 
         depositButton = (Button)findViewById(R.id.depositButtonAction);
         showbtn = (Button)findViewById(R.id.depositShow);
         inputDepositText = (EditText)findViewById(R.id.depositInputEditText);
         txtview = (TextView)findViewById(R.id.showBalanceText);
+
+
+
         depositButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String encryptData = inputDepositText.getText().toString();
-                String encryptedFinalData = encryptFile(encryptData);
 
+                int currentBalance = Integer.parseInt(retBalance(username));
+                int addingBalance = Integer.parseInt(inputDepositText.getText().toString());
+                int finalBalance = currentBalance + addingBalance;
+                //String encryptData = inputDepositText.getText().toString();
+                String finalMoney = String.valueOf(finalBalance);
+                String addingValue = String.valueOf(addingBalance);
+                String type = "Deposit";
+                String dateTime = retDate();
                 PrintStream output = null;
-                try {
+
+
+                String encryptData = finalMoney + "/" + type + "/" + addingValue + "/" + dateTime;
+                String encryptedFinalData = encryptFile(encryptData);
+                String fname = username + ".log";
+                helper.appendToFile(encryptedFinalData,fname);
+                /*try {
                     output = new PrintStream(
                             openFileOutput("out.log",
                                     MODE_PRIVATE));
@@ -72,7 +94,7 @@ public class Deposit extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 output.println(encryptedFinalData);
-                output.close();
+                output.close();*/
                 txtview.setText(encryptedFinalData);
             }
         });
@@ -80,8 +102,19 @@ public class Deposit extends AppCompatActivity {
         showbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String fname = username + ".log";
                 String allText = "";   // read entire file
-                try {
+                ArrayList<String> changes;
+                changes = helper.readFromFile(fname);
+                String lastchanges = "";
+
+                if(changes.size()>=1){
+                    lastchanges = changes.get(changes.size()-1);
+                }
+                else{
+                    lastchanges = "0";
+                }
+                /*try {
                     Scanner scan = new Scanner(
                             openFileInput("out.log"));
 
@@ -89,11 +122,12 @@ public class Deposit extends AppCompatActivity {
 
                     String output = decryptFile(line);
                     txtview.setText(output);
-                    //txtview.setText(output);
                     scan.close();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                }
+                }*/
+                txtview.setText(lastchanges);
+
 
             }
         });
@@ -101,11 +135,34 @@ public class Deposit extends AppCompatActivity {
 
 
     }
+    public String retDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentDateTime = sdf.format(new Date());
+        return currentDateTime;
+    }
+    public String retBalance(String username){
+        String fname = username + ".log";
+        helper = new HelperFunctions(Deposit.this);
+        ArrayList<String> userslog = helper.readFromFile(fname);
+        String balance;
+        if(userslog.size()>=1){
+            String tmp = userslog.get(userslog.size()-1);
+            String delims = "[/]";
+            String[] logs = tmp.split(delims);
+            balance = logs[0];
+        }
+        else{
+            balance="0";
+        }
+
+        return balance;
+    }
 
 
 
     public byte[] generateKeyWithPswd(String myPassword)
     {
+        myPassword=myPassword+helper.getSalt();
         MessageDigest sha = null;
         try {
             key = myPassword.getBytes("UTF-8");
@@ -126,7 +183,7 @@ public class Deposit extends AppCompatActivity {
     public String encryptFile(String input){
         try {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            SecretKeySpec secretKey = new SecretKeySpec(generateKeyWithPswd("paswdNuriddin"), "AES");
+            SecretKeySpec secretKey = new SecretKeySpec(generateKeyWithPswd(username), "AES");
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             byte[] utf8EncryptedData = cipher.doFinal(input.getBytes());
             String encryptedString = new BASE64Encoder().encode(utf8EncryptedData);
@@ -140,17 +197,11 @@ public class Deposit extends AppCompatActivity {
     public String decryptFile(String input){
         try {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
-            SecretKeySpec secretKey = new SecretKeySpec(generateKeyWithPswd("paswdNuriddin"), "AES");
+            SecretKeySpec secretKey = new SecretKeySpec(generateKeyWithPswd(username), "AES");
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
             byte[] cipherText = new BASE64Decoder().decodeBuffer(input);//.decode(input.getBytes("UTF8"));
             String decryptedString = new String(cipher.doFinal(cipherText),"UTF-8");
             return decryptedString;
-            /*byte[] decreyptedData = cipher.doFinal(input.getBytes("UTF8"));
-            String decryptedString = new String(decreyptedData);
-
-            //byte[] cipherText = Base64.getDecoder().decode(input.getBytes("UTF8"));
-            //String decryptedString = new String(cipherText);*/
-            //return decryptedString;
         } catch (Exception e) {
             e.printStackTrace();
         }

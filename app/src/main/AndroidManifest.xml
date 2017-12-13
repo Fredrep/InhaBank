@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.shakhboz.inhabank">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="                          Inha Bank"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MixedActions.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MixedActions.Login" />
+        <activity android:name=".Transactions.Deposit" />
+        <activity android:name=".Transactions.Withdraw" />
+        <activity android:name=".Transactions.Transfer" />
+        <activity android:name=".CheckInformation.Balance" />
+        <activity android:name=".CheckInformation.TransactionHistory" />
+        <activity android:name=".CheckInformation.Transactions" />
+        <activity android:name=".CheckInformation.TransactionsFolder.Deposit"></activity>
+    </application>
+
+</manifest>

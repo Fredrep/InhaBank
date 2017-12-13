@@ -20,11 +20,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView currentUsersRecyclerView;
-<<<<<<< Updated upstream
+
     private ArrayList<String> usernames;
-=======
+
     private ArrayList<User> currentUsersArrayList;
->>>>>>> Stashed changes
+
     Button deposit,withdraw ,transfer, history;
     HelperFunctions helper;
 
@@ -89,10 +89,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-<<<<<<< Updated upstream
+
         HelperFunctions helper = new HelperFunctions(getApplicationContext());
         usernames = helper.readFromFile(HelperFunctions.usernamesFileName);
-=======
+
         ArrayList<String> usernames = helper.readFromFile(HelperFunctions.usernamesFileName);
         Log.e("SIZE:::", usernames.size() + "");
         for(int i = 0; i < currentUsersArrayList.size(); i++){
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
        User user = new User("Shakhboz");
       currentUsersArrayList.add(user);
->>>>>>> Stashed changes
+
         currentUsersRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_id);
         RecyclerView.LayoutManager currentUsersLayoutManager = new LinearLayoutManager(getApplicationContext());
         currentUsersRecyclerView.setLayoutManager(currentUsersLayoutManager);

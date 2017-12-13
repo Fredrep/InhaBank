@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shakhboz.inhabank.MixedActions.HelperFunctions;
+import com.example.shakhboz.inhabank.MixedActions.MainActivity;
 import com.example.shakhboz.inhabank.R;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,7 +44,8 @@ public class Transfer extends AppCompatActivity {
                 final String file_name=transferred_to_user.getText().toString()+".txt";
                     if(!transferred_to_user.getText().toString().isEmpty()&& !amount.getText().toString().isEmpty()) {
                         ob.writeToFile(data, file_name);
-
+                        Intent intent = new Intent(Transfer.this, MainActivity.class);
+                        startActivity(intent);
                     }
                     else
                     {

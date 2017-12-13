@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Created by ShakhboZ on 12/12/2017.
  */
 
-public class CurrentUsersApapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class CurrentUsersAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
     ArrayList<CurrentUsers> currentUsers;
     Context context;
@@ -38,7 +38,7 @@ public class CurrentUsersApapter extends  RecyclerView.Adapter<RecyclerView.View
         return context;
     }
 
-    public CurrentUsersApapter(ArrayList<CurrentUsers> currentUsers, Context context) {
+    public CurrentUsersAdapter(ArrayList<CurrentUsers> currentUsers, Context context) {
 
         this.currentUsers = currentUsers;
         this.context = context;

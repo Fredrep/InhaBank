@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.shakhboz.inhabank.R;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Scanner;
@@ -32,6 +33,16 @@ public class Login extends AppCompatActivity {
         txtForget = (TextView) findViewById(R.id.forgotPass);
         editUsername = (EditText) findViewById(R.id.username);
         editPassword = (EditText) findViewById(R.id.password);
+
+
+        try {
+            File usernamesFile = new File(HelperFunctions.usernamesFileName);
+            File passwFile = new File(HelperFunctions.hashedPasswords);
+            usernamesFile.createNewFile();
+            passwFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

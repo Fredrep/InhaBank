@@ -23,6 +23,7 @@ import java.util.Scanner;
 
 public class HelperFunctions {
     Context context;
+    public static String usernamesFileName = "Usernames.txt", hashedPasswords = "hashedPAsswords.txt";
     public HelperFunctions(Context context){
         this.context = context;
     };
@@ -46,6 +47,25 @@ public class HelperFunctions {
         }
         return generatedPassword;
     }
+
+    public void appendToFile(String data, String filename){
+
+        ArrayList<String> arrayData = readFromFile(filename);
+        arrayData.add(data);
+
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(filename, Context.MODE_PRIVATE));
+            for(int i = 0; i < arrayData.size(); i++){
+                outputStreamWriter.append(arrayData.get(i) + "\n");
+            }
+
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
 
     public void writeToFile(String data, String filename) {
         try {

@@ -20,8 +20,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView currentUsersRecyclerView;
+<<<<<<< Updated upstream
     private ArrayList<String> usernames;
+=======
+    private ArrayList<User> currentUsersArrayList;
+>>>>>>> Stashed changes
     Button deposit,withdraw ,transfer, history;
+    HelperFunctions helper;
 
     Intent intent;
 
@@ -37,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         history = (Button) findViewById(R.id.history_id);
 
         intent = getIntent();
+        helper = new HelperFunctions(getApplicationContext());
+        currentUsersArrayList = new ArrayList<User>();
+
         final String username = intent.getStringExtra("username");
         final String password = intent.getStringExtra("password");
         Log.i("username + password",username+password);
@@ -81,8 +89,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+<<<<<<< Updated upstream
         HelperFunctions helper = new HelperFunctions(getApplicationContext());
         usernames = helper.readFromFile(HelperFunctions.usernamesFileName);
+=======
+        ArrayList<String> usernames = helper.readFromFile(HelperFunctions.usernamesFileName);
+        Log.e("SIZE:::", usernames.size() + "");
+        for(int i = 0; i < currentUsersArrayList.size(); i++){
+            User user = new User(usernames.get(i));
+            Log.e("USERNAMES:::", usernames.get(i));
+            currentUsersArrayList.add(user);
+        }
+
+
+       User user = new User("Shakhboz");
+      currentUsersArrayList.add(user);
+>>>>>>> Stashed changes
         currentUsersRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_id);
         RecyclerView.LayoutManager currentUsersLayoutManager = new LinearLayoutManager(getApplicationContext());
         currentUsersRecyclerView.setLayoutManager(currentUsersLayoutManager);

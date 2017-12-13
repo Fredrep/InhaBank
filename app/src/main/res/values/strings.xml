@@ -3,7 +3,7 @@
     <string name="pass">Password</string>
     <string name="username">Username</string>
     <string name="login">Login</string>
-    <string name="fgot">Forgot your loging details?</string>
+    <string name="fgot">Don\'t have an account?</string>
     <string name="have">Already have an account?</string>
     <string name="yes">Yes</string>
     <string name="signup">Sign up</string>

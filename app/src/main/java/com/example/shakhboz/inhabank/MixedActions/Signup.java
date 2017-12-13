@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Signup extends AppCompatActivity {
 
     Button btnLogin, btnSignUp;
-    TextView txtForget;
+    TextView txtSignIn;
     EditText editUsername, editPassword;
 
     @Override
@@ -27,7 +27,7 @@ public class Signup extends AppCompatActivity {
 
         btnLogin = (Button) findViewById(R.id.btnLogIn);
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        txtForget = (TextView) findViewById(R.id.haveAccount);
+        txtSignIn = (TextView) findViewById(R.id.haveAccount);
         editUsername = (EditText) findViewById(R.id.usernameSignUp);
         editPassword = (EditText) findViewById(R.id.passwordSignUp);
 
@@ -37,10 +37,10 @@ public class Signup extends AppCompatActivity {
             public void onClick(View v) {
                 String username = editUsername.getText().toString();
                 String password = editPassword.getText().toString();
-                HelperFunctions helper = new HelperFunctions(Signup.this);
+                HelperFunctions helper = new HelperFunctions(getApplicationContext());
                 if(!username.isEmpty()){
                     if(!password.isEmpty()){
-                        if(helper.isUsernameAvailable(username)){
+                        if(!helper.isUsernameExist(username)){
                             String hashedPassw = helper.getSHA128Password(password);
                             helper.appendToFile(username, HelperFunctions.usernamesFileName);
                             helper.appendToFile(hashedPassw, HelperFunctions.hashedPasswords);
@@ -70,7 +70,7 @@ public class Signup extends AppCompatActivity {
             }
         });
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        txtSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Signup.this, Login.class);

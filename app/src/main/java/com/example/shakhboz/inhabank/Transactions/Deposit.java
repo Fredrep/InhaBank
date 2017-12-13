@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -150,8 +151,10 @@ public class Deposit extends AppCompatActivity {
         String balance;
         if(userslog.size()>=1){
             String tmp = userslog.get(userslog.size()-1);
+            Log.e("FROMFILE::", tmp);
+            String alldata = decryptFile(tmp);
             String delims = "[/]";
-            String[] logs = tmp.split(delims);
+            String[] logs = alldata.split(delims);
             balance = logs[0];
         }
         else{

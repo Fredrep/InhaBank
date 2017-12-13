@@ -11,4 +11,5 @@
     <string name="amount">Amount: $</string>
     <string name="transfer_date">Transfer Date and Time :</string>
     <string name="date">date</string>
+    <string name="submit">Submit</string>
 </resources>

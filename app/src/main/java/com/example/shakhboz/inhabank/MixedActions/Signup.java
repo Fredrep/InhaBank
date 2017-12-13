@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Signup extends AppCompatActivity {
 
-    Button btnSignUp;
+    Button btnLogin, btnSignUp;
     TextView txtSignIn;
     EditText editUsername, editPassword;
 
@@ -26,7 +26,6 @@ public class Signup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
         txtSignIn = (TextView) findViewById(R.id.haveAccount);
         editUsername = (EditText) findViewById(R.id.usernameSignUp);

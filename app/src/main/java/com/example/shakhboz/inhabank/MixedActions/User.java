@@ -4,9 +4,9 @@ package com.example.shakhboz.inhabank.MixedActions;
  * Created by ShakhboZ on 12/12/2017.
  */
 
-public class CurrentUsers  {
+public class User {
     private String userName;
-    public CurrentUsers (String userName) {
+    public User(String userName) {
 
         this.userName = userName;
     }

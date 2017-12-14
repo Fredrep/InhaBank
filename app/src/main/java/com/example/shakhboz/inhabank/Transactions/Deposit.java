@@ -102,6 +102,8 @@ public class Deposit extends AppCompatActivity {
                 inputDepositText.setText("");
                 Toast.makeText(Deposit.this, "Completed deposit", Toast.LENGTH_SHORT).show();
                 Intent mainIntent = new Intent(Deposit.this, MainActivity.class);
+                mainIntent.putExtra("username", username);
+                mainIntent.putExtra("password", password);
                 startActivity(mainIntent);
             }
         });

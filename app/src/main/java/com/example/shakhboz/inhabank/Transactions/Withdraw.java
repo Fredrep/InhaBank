@@ -99,6 +99,8 @@ public class Withdraw extends AppCompatActivity {
                 inputWithText.setText("");
                 Toast.makeText(Withdraw.this, "Completed withdraw", Toast.LENGTH_SHORT).show();
                 Intent mainIntent = new Intent(Withdraw.this, MainActivity.class);
+                mainIntent.putExtra("username", username);
+                mainIntent.putExtra("password", password);
                 startActivity(mainIntent);
             }
         });

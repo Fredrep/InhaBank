@@ -4,6 +4,13 @@
     <string name="username">Username</string>
     <string name="login">Login</string>
     <string name="fgot">Forgot your loging details?</string>
+    <string name="have">Already have an account?</string>
     <string name="yes">Yes</string>
     <string name="signup">Sign up</string>
+    <string name="trs"> Transfer from:</string>
+    <string name="transfer_to">Transfer to:</string>
+    <string name="amount">Amount: $</string>
+    <string name="transfer_date">Transfer Date and Time :</string>
+    <string name="date">date</string>
+    <string name="submit">Submit</string>
 </resources>

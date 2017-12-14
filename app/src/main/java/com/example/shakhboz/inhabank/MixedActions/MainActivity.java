@@ -1,6 +1,5 @@
 package com.example.shakhboz.inhabank.MixedActions;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +10,10 @@ import android.widget.Button;
 
 import com.example.shakhboz.inhabank.CheckInformation.Balance;
 import com.example.shakhboz.inhabank.CheckInformation.TransactionHistory;
-import com.example.shakhboz.inhabank.CheckInformation.Transactions;
 import com.example.shakhboz.inhabank.R;
+import com.example.shakhboz.inhabank.Transactions.Deposit;
+import com.example.shakhboz.inhabank.Transactions.Transfer;
+import com.example.shakhboz.inhabank.Transactions.Withdraw;
 
 import java.util.ArrayList;
 
@@ -20,27 +21,35 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView currentUsersRecyclerView;
     private ArrayList<CurrentUsers> currentUsersArrayList;
-    Button balance, transactions, history;
+    Button deposit,withdraw ,transfer, history;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        balance = (Button) findViewById(R.id.balance_id);
-        transactions = (Button) findViewById(R.id.transactions_id);
+        deposit = (Button) findViewById(R.id.deposit_id);
+        withdraw=(Button)findViewById(R.id.withrdaw_id);
+        transfer = (Button) findViewById(R.id.transfer_id);
         history = (Button) findViewById(R.id.history_id);
-        balance.setOnClickListener(new View.OnClickListener() {
+        deposit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Balance.class);
+                Intent intent = new Intent(MainActivity.this, Deposit.class);
                 startActivity(intent);
             }
         });
-        transactions.setOnClickListener(new View.OnClickListener() {
+        withdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Transactions.class);
+                Intent intent = new Intent(MainActivity.this, Withdraw.class);
+                startActivity(intent);
+            }
+        });
+        transfer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Transfer.class);
                 startActivity(intent);
             }
         });
@@ -59,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         currentUsersRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_id);
         RecyclerView.LayoutManager currentUsersLayoutManager = new LinearLayoutManager(getApplicationContext());
         currentUsersRecyclerView.setLayoutManager(currentUsersLayoutManager);
-        currentUsersRecyclerView.setAdapter(new CurrentUsersApapter(this.currentUsersArrayList, MainActivity.this));
+        currentUsersRecyclerView.setAdapter(new CurrentUsersAdapter(this.currentUsersArrayList, MainActivity.this));
 
     }
 }

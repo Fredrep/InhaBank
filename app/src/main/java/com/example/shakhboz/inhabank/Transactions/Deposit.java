@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.shakhboz.inhabank.MixedActions.HelperFunctions;
 import com.example.shakhboz.inhabank.R;
 
 import java.io.FileNotFoundException;
@@ -20,6 +21,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Scanner;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -30,6 +32,8 @@ import Decoder.BASE64Encoder;
 
 public class Deposit extends AppCompatActivity {
     private byte[] key;
+
+    Intent intent;
     /*private static byte[] key = {
             0x2d, 0x2a, 0x2d, 0x42, 0x55, 0x49, 0x4c, 0x44, 0x41, 0x43, 0x4f, 0x44, 0x45, 0x2d, 0x2a, 0x2d
     };*/
@@ -37,12 +41,18 @@ public class Deposit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposit);
-        Intent depositIntent = getIntent();
 
         Button depositButton;
         Button showbtn;
         final EditText inputDepositText;
         final TextView txtview;
+
+        intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String password = intent.getStringExtra("password");
+
+        HelperFunctions helper = new HelperFunctions(Deposit.this);
+        String salt = helper.getSalt();
 
         depositButton = (Button)findViewById(R.id.depositButtonAction);
         showbtn = (Button)findViewById(R.id.depositShow);

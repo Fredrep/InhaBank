@@ -70,8 +70,8 @@ public class Deposit extends AppCompatActivity {
         depositButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                int currentBalance = Integer.parseInt(retBalance(username));
+                String curr = retBalance(username);
+                int currentBalance = Integer.parseInt(curr);
                 int addingBalance = Integer.parseInt(inputDepositText.getText().toString());
                 int finalBalance = currentBalance + addingBalance;
                 //String encryptData = inputDepositText.getText().toString();
@@ -107,9 +107,12 @@ public class Deposit extends AppCompatActivity {
                 ArrayList<String> changes;
                 changes = helper.readFromFile(fname);
                 String lastchanges = "";
+                String output="";
 
                 if(changes.size()>=1){
-                    lastchanges = changes.get(changes.size()-1);
+                    output = changes.get(changes.size()-1);
+                    lastchanges = decryptFile(output);
+
                 }
                 else{
                     lastchanges = "0";
